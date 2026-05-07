@@ -387,7 +387,7 @@ function doSend(){
     practitioner_signature: document.getElementById("pvc") ? document.getElementById("pvc").toDataURL() : "",
     photo_id: photoB64 || ""
   };
-
+emailjs.init("ap8k1hPL-3jBeB2hQ");
   emailjs.send("service_b20kq2f", "template_4rdzxr4", templateParams)
     .then(function() {
       showBnr("Form sent successfully to 7 Sins!", 5000);
