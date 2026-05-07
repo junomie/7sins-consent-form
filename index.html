@@ -122,10 +122,6 @@ body{padding:0 0 80px;-webkit-text-size-adjust:100%}
 @media(min-width:768px){.wrap{max-width:760px;padding:0 26px}.sec{padding:26px}.f input,.f textarea,.f select{padding:12px 15px;font-size:15px}.g2{gap:16px}.hdr img{height:58px}}
 @media print{body,html{background:#fff;color:#000}.hdr{background:#fff;border-bottom:2px solid #c8a200;position:static}.sec{background:#fff;border:1px solid #c8a200;break-inside:avoid}.sec-t{color:#c8a200}.f input,.f textarea,.f select,.ci,.chip,.sigw{background:#fff;border-color:#ccc;color:#000}.pbar,.bnr,.acts,.clr,.ovl{display:none!important}.ct{color:#000!important}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  emailjs.init("ap8k1hPL-3jBeB2hQ");
-</script>
 </head>
 <body>
 
@@ -381,18 +377,23 @@ function doSend(){
   body += "Date: " + document.getElementById("cd").value + "\n";
   body += "\n[Signatures captured on device]";
   if(photoB64) body += "\n[ID photo saved separately to device]";
-  var subj = encodeURIComponent("Consent Form - "+(document.getElementById("nm").value||"New Client"));
-  var benc = encodeURIComponent(body);
-  window.location.href = "mailto:7sinstattoopiercing@gmail.com?subject="+subj+"&body="+benc;
-  if(photoB64){
-    setTimeout(function(){
-      var a = document.createElement("a");
-      var nm = (document.getElementById("nm").value||"client").split(" ").join("_");
-      var dt = new Date().toISOString().slice(0,10);
-      a.href = photoB64; a.download = "7sins_ID_"+nm+"_"+dt+".jpg"; a.click();
-      showBnr("Form sent and ID photo saved to device",5000);
-    },800);
-  } else { showBnr("Opening email to send form to 7 Sins...",4000); }
+ var templateParams = {
+    client_name: document.getElementById("nm").value || "New Client",
+    dob: document.getElementById("dob").value,
+    date: document.getElementById("cd").value,
+    artist: document.getElementById("pnm").value,
+    procedure: document.getElementById("plc").value,
+    client_signature: document.getElementById("cvc") ? document.getElementById("cvc").toDataURL() : "",
+    practitioner_signature: document.getElementById("pvc") ? document.getElementById("pvc").toDataURL() : "",
+    photo_id: photoB64 || ""
+  };
+
+  emailjs.send("service_b20kq2f", "template_4rdzxr4", templateParams)
+    .then(function() {
+      showBnr("Form sent successfully to 7 Sins!", 5000);
+    }, function(error) {
+      showBnr("Error sending form: " + error.text, 5000);
+    });
 }
 
 function resetAll(){
