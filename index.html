@@ -386,8 +386,7 @@ function doSend(){
     artist: document.getElementById("pnm").value,
     procedure: document.getElementById("plc").value,
     client_signature: document.getElementById("cvc") ? document.getElementById("cvc").toDataURL() : "",
-    practitioner_signature: document.getElementById("pvc") ? document.getElementById("pvc").toDataURL() : "",
-    photo_id: photoB64 || ""
+    practitioner_signature: document.getElementById("pvc") ? document.getElementById("pvc").toDataURL() 
   };
 
   emailjs.send("service_b20kq2f", "template_4rdzxr4", templateParams)
