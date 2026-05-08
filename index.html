@@ -123,6 +123,7 @@ body{padding:0 0 80px;-webkit-text-size-adjust:100%}
 @media print{body,html{background:#fff;color:#000}.hdr{background:#fff;border-bottom:2px solid #c8a200;position:static}.sec{background:#fff;border:1px solid #c8a200;break-inside:avoid}.sec-t{color:#c8a200}.f input,.f textarea,.f select,.ci,.chip,.sigw{background:#fff;border-color:#ccc;color:#000}.pbar,.bnr,.acts,.clr,.ovl{display:none!important}.ct{color:#000!important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init("ap8k1hPL-3jBeB2hQ");</script>
 </head>
 <body>
 
@@ -388,7 +389,7 @@ function doSend(){
     practitioner_signature: document.getElementById("pvc") ? document.getElementById("pvc").toDataURL() : "",
     photo_id: photoB64 || ""
   };
-emailjs.init("ap8k1hPL-3jBeB2hQ");
+
   emailjs.send("service_b20kq2f", "template_4rdzxr4", templateParams)
     .then(function() {
       showBnr("Form sent successfully to 7 Sins!", 5000);
