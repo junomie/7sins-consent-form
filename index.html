@@ -333,12 +333,22 @@ function gotPhoto(inp){
   var file = inp.files[0]; if(!file) return;
   var reader = new FileReader();
   reader.onload = function(e){
-    photoB64 = e.target.result;
+  var img = new Image();
+  img.onload = function(){
+    var canvas = document.createElement("canvas");
+    var maxW = 800;
+    var scale = Math.min(maxW/img.width, 1);
+    canvas.width = img.width * scale;
+    canvas.height = img.height * scale;
+    canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+    photoB64 = canvas.toDataURL("image/jpeg", 0.5);
     document.getElementById("phimg").src = photoB64;
     document.getElementById("phprev").style.display = "block";
     document.getElementById("phlbl").classList.add("on");
     prog();
   };
+  img.src = e.target.result;
+};
   reader.readAsDataURL(file);
 }
 function rmPhoto(){
