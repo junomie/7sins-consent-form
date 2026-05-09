@@ -178,17 +178,7 @@ body{padding:0 0 80px;-webkit-text-size-adjust:100%}
     </div>
   </div>
   <div class="f" id="otherId" style="display:none;margin-top:10px;"><label>Specify Other ID</label><input id="oid" type="text" placeholder="e.g. Student card"/></div>
-  <div class="phwrap" id="phwrap">
-    <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:12px 0 8px;">ID Photo</div>
-    <input type="file" id="phfile" accept="image/*" capture="environment" style="display:none" onchange="gotPhoto(this)"/>
-    <button class="phbtn" onclick="document.getElementById('phfile').click()">
-      <span class="ic">&#128247;</span>
-      <span class="tx">Take Photo of ID<span class="sub">Opens camera to photograph ID document</span></span>
-    </button>
-    <div class="phprev" id="phprev"><img id="phimg" src="" alt="ID"/><button onclick="rmPhoto()">&#10005; Remove</button></div>
-    <div class="phlbl" id="phlbl">&#10003; ID photo captured</div>
-  </div>
-</div>
+  
 
 <div class="sec">
   <div class="sec-t">Tattoo Details</div>
