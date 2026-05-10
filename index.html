@@ -390,6 +390,7 @@ function doSend(){
     address: document.getElementById("addr").value,
     emergency_contact: document.getElementById("ec").value,
     id_type: selId,
+    id_supplied: document.getElementById("ids").value,
     initials: inits,
     client_signature: document.getElementById("cvc") ? document.getElementById("cvc").toDataURL() : "",
     practitioner_signature: document.getElementById("pvc") ? document.getElementById("pvc").toDataURL(): ""
