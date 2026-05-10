@@ -385,6 +385,11 @@ function doSend(){
     date: document.getElementById("cd").value,
     artist: document.getElementById("pnm").value,
     procedure: document.getElementById("plc").value,
+    phone: document.getElementById("ph").value,
+    email: document.getElementById("em").value,
+    address: document.getElementById("addr").value,
+    id_type: selId,
+    initials: inits,
     client_signature: document.getElementById("cvc") ? document.getElementById("cvc").toDataURL() : "",
     practitioner_signature: document.getElementById("pvc") ? document.getElementById("pvc").toDataURL(): ""
   };
